@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1300" viewBox="0 0 1000 1300" font-family="DejaVu Sans, Arial, sans-serif">
+<rect width="1000" height="1300" fill="#ffffff"/>
+<text x="50" y="44" font-size="22" font-weight="bold" fill="#0f172a">Diagrama de Flujo del Firmware — ESP32 SIAM-Yucatán</text>
+<text x="50" y="70" font-size="13" fill="#64748b">Lógica No Bloqueante (millis) · Control Térmico, Conmutación NPN y Retorno Anti-Olvido</text>
+<rect x="410" y="100" width="180" height="45" rx="22.5" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="500.0" y="126.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">INICIO / RESET</text>
+<line x1="500" y1="145" x2="500" y2="175" stroke="#334155" stroke-width="2"/>
+<polygon points="500,175 496,167 504,167" fill="#334155"/>
+<rect x="350" y="175" width="300" height="70" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="500.0" y="190.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">setup():</text>
+<text x="500.0" y="206.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Inicializar Pines (FAN, RGB, LED Red, LDR, PIR)</text>
+<text x="500.0" y="222.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Wire.begin() · SHT41 (0x44) · OLED (0x3C)</text>
+<text x="500.0" y="238.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Wi-Fi STA + MQTT LWT ('offline')</text>
+<line x1="500" y1="245" x2="500" y2="280" stroke="#334155" stroke-width="2"/>
+<polygon points="500,280 496,272 504,272" fill="#334155"/>
+<rect x="380" y="280" width="240" height="45" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="500.0" y="298.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">loop(): Obtener millis()</text>
+<text x="500.0" y="314.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Revisar Wi-Fi &amp; MQTT</text>
+<line x1="500" y1="325" x2="500" y2="360" stroke="#334155" stroke-width="2"/>
+<polygon points="500,360 496,352 504,352" fill="#334155"/>
+<polygon points="500.0,360 610,390.0 500.0,420 390,390.0" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="500.0" y="386.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">¿Wi-Fi &amp; MQTT</text>
+<text x="500.0" y="402.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Conectados?</text>
+<line x1="610" y1="390" x2="680" y2="390" stroke="#334155" stroke-width="2"/>
+<polygon points="680,390 676,382 684,382" fill="#334155"/>
+<text x="653.0" y="390.0" font-size="10" font-weight="bold" fill="#2563eb">NO</text>
+<rect x="680" y="370" width="170" height="40" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<text x="765.0" y="386.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Parpadeo LED Azul (200ms)</text>
+<text x="765.0" y="402.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Reintentar conexión</text>
+<line x1="500" y1="420" x2="500" y2="460" stroke="#334155" stroke-width="2"/>
+<polygon points="500,460 496,452 504,452" fill="#334155"/>
+<text x="508.0" y="440.0" font-size="10" font-weight="bold" fill="#2563eb">SÍ</text>
+<polygon points="500.0,460 640,490.0 500.0,520 360,490.0" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
+<text x="500.0" y="478.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">¿ahora - ultimaLectura &gt;= 2000 ms?</text>
+<text x="500.0" y="494.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Leer SHT41, LDR, PIR</text>
+<text x="500.0" y="510.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Calcular Heat Index NOAA</text>
+<line x1="500" y1="520" x2="500" y2="560" stroke="#334155" stroke-width="2"/>
+<polygon points="500,560 496,552 504,552" fill="#334155"/>
+<text x="508.0" y="540.0" font-size="10" font-weight="bold" fill="#2563eb">SÍ</text>
+<polygon points="500.0,560 600,590.0 500.0,620 400,590.0" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="500.0" y="594.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">¿Modo Operativo?</text>
+<line x1="400" y1="590" x2="280" y2="590" stroke="#334155" stroke-width="2"/>
+<polygon points="280,590 276,582 284,582" fill="#334155"/>
+<text x="348.0" y="590.0" font-size="10" font-weight="bold" fill="#2563eb">AUTO</text>
+<line x1="600" y1="590" x2="720" y2="590" stroke="#334155" stroke-width="2"/>
+<polygon points="720,590 716,582 724,582" fill="#334155"/>
+<text x="668.0" y="590.0" font-size="10" font-weight="bold" fill="#2563eb">MANUAL</text>
+<polygon points="265.0,620 390,655.0 265.0,690 140,655.0" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+<text x="265.0" y="651.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">¿(HI &gt;= 38°C || Temp &gt;= Umbral)</text>
+<text x="265.0" y="667.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">&amp;&amp; Presencia == 1?</text>
+<rect x="140" y="730" width="250" height="45" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+<text x="265.0" y="748.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Ventilador ON (Saturar NPN GPIO 23)</text>
+<text x="265.0" y="764.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">tiempoUltimaPresencia = millis()</text>
+<line x1="265" y1="690" x2="265" y2="730" stroke="#334155" stroke-width="2"/>
+<polygon points="265,730 261,722 269,722" fill="#334155"/>
+<text x="273.0" y="710.0" font-size="10" font-weight="bold" fill="#2563eb">SÍ</text>
+<polygon points="265.0,810 390,840.0 265.0,870 140,840.0" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+<text x="265.0" y="836.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">¿Desocupado &gt; 30s ||</text>
+<text x="265.0" y="852.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">(Temp &lt; 30°C &amp;&amp; HI &lt; 35°C)?</text>
+<line x1="265" y1="775" x2="265" y2="810" stroke="#334155" stroke-width="2"/>
+<polygon points="265,810 261,802 269,802" fill="#334155"/>
+<rect x="140" y="910" width="250" height="45" rx="6" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+<text x="265.0" y="936.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Ventilador OFF (Corte NPN GPIO 23)</text>
+<line x1="265" y1="870" x2="265" y2="910" stroke="#334155" stroke-width="2"/>
+<polygon points="265,910 261,902 269,902" fill="#334155"/>
+<text x="273.0" y="890.0" font-size="10" font-weight="bold" fill="#2563eb">SÍ</text>
+<rect x="610" y="620" width="250" height="65" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="735.0" y="640.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Control Remoto desde Node-RED</text>
+<text x="735.0" y="656.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Recibe ON / OFF en tópico set</text>
+<text x="735.0" y="672.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Confirma estado en lazo cerrado</text>
+<line x1="735" y1="685" x2="735" y2="725" stroke="#334155" stroke-width="2"/>
+<polygon points="735,725 731,717 739,717" fill="#334155"/>
+<polygon points="735.0,725 860,760.0 735.0,795 610,760.0" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+<text x="735.0" y="748.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">¿Ventilador ON &amp;&amp;</text>
+<text x="735.0" y="764.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">ahora - inicioManual &gt;= 60 s?</text>
+<text x="735.0" y="780.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">(Purga anti-olvido)</text>
+<rect x="610" y="835" width="250" height="50" rx="6" fill="#ffedd5" stroke="#c2410c" stroke-width="2"/>
+<text x="735.0" y="848.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Retorno Autónomo a MODO AUTO</text>
+<text x="735.0" y="864.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Publicar cambio de modo</text>
+<text x="735.0" y="880.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Evaluar presencia para apagar</text>
+<line x1="735" y1="795" x2="735" y2="835" stroke="#334155" stroke-width="2"/>
+<polygon points="735,835 731,827 739,827" fill="#334155"/>
+<text x="743.0" y="815.0" font-size="10" font-weight="bold" fill="#2563eb">SÍ</text>
+<rect x="350" y="1000" width="300" height="75" rx="6" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="500.0" y="1025.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Actualizar Semáforo RGB NOM-015</text>
+<text x="500.0" y="1041.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Publicar tópicos planos y JSON por MQTT</text>
+<text x="500.0" y="1057.5" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Rotar pantalla OLED cada 3s (vistas 0-3)</text>
+<line x1="265" y1="955" x2="400" y2="1000" stroke="#334155" stroke-width="2"/>
+<polygon points="400,1000 396,992 404,992" fill="#334155"/>
+<line x1="735" y1="885" x2="600" y2="1000" stroke="#334155" stroke-width="2"/>
+<polygon points="600,1000 596,992 604,992" fill="#334155"/>
+<line x1="500" y1="1075" x2="500" y2="1120" stroke="#334155" stroke-width="2"/>
+<polygon points="500,1120 496,1112 504,1112" fill="#334155"/>
+<rect x="400" y="1120" width="200" height="40" rx="20.0" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="500.0" y="1144.0" font-size="11.5" font-weight="bold" fill="#0f172a" text-anchor="middle">Fin de iteración loop()</text>
+</svg>

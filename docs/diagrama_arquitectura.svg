@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" font-family="DejaVu Sans, Arial, sans-serif">
+<rect width="1400" height="900" fill="#f8fafc"/>
+<text x="50" y="50" font-size="24" font-weight="bold" fill="#0f172a">Arquitectura Integral del Sistema IoT — SIAM-Yucatán</text>
+<text x="50" y="78" font-size="14" fill="#64748b">Universidad Politécnica de Yucatán (UPY) · Capas IoT: Percepción, Control Embebido, Red MQTT y Supervisión Node-RED</text>
+<rect x="50" y="110" width="290" height="720" rx="10" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+<text x="70" y="142" font-size="16" font-weight="bold" fill="#0284c7">📡 1. Percepción y Entorno</text>
+<text x="70" y="164" font-size="12" fill="#475569">Variables Físicas &amp; Transductores</text>
+<rect x="380" y="110" width="310" height="720" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+<text x="400" y="142" font-size="16" font-weight="bold" fill="#16a34a">⚡ 2. Nodo Controlador</text>
+<text x="400" y="164" font-size="12" fill="#475569">ESP32 Firmware &amp; Automatización</text>
+<rect x="730" y="110" width="290" height="720" rx="10" fill="#ffffff" stroke="#ea580c" stroke-width="2"/>
+<text x="750" y="142" font-size="16" font-weight="bold" fill="#ea580c">🌐 3. Transporte y Servicio</text>
+<text x="750" y="164" font-size="12" fill="#475569">Eclipse Mosquitto Broker</text>
+<rect x="1060" y="110" width="290" height="720" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1080" y="142" font-size="16" font-weight="bold" fill="#7c3aed">🖥️ 4. Supervisión y Mando</text>
+<text x="1080" y="164" font-size="12" fill="#475569">Node-RED Dashboard 2.0</text>
+<text x="70" y="200" font-size="13" font-weight="bold" fill="#0f172a">• GY-SHT41 (I²C 0x44):</text>
+<text x="70" y="222" font-size="12" font-weight="normal" fill="#334155">  Temperatura (±0.2 °C)</text>
+<text x="70" y="242" font-size="12" font-weight="normal" fill="#334155">  Humedad Relativa (±1.8 %)</text>
+<text x="70" y="280" font-size="13" font-weight="bold" fill="#0f172a">• Fotocelda LDR (ADC1_CH6):</text>
+<text x="70" y="302" font-size="12" font-weight="normal" fill="#334155">  GPIO 34 · Divisor 10 kΩ</text>
+<text x="70" y="322" font-size="12" font-weight="normal" fill="#334155">  Nivel de iluminancia (0-100%)</text>
+<text x="70" y="360" font-size="13" font-weight="bold" fill="#0f172a">• Sensor PIR HC-SR501:</text>
+<text x="70" y="382" font-size="12" font-weight="normal" fill="#334155">  GPIO 35 · Entrada digital</text>
+<text x="70" y="402" font-size="12" font-weight="normal" fill="#334155">  Detección humana en sala</text>
+<text x="70" y="440" font-size="13" font-weight="bold" fill="#0f172a">• Entorno Bioclimático:</text>
+<text x="70" y="462" font-size="12" font-weight="normal" fill="#334155">  Mérida, Ucú y Kanasín</text>
+<text x="70" y="482" font-size="12" font-weight="normal" fill="#334155">  Estrés térmico y canícula</text>
+<text x="400" y="200" font-size="13" font-weight="bold" fill="#0f172a">• ESP32 DevKit V1 (240 MHz):</text>
+<text x="400" y="222" font-size="12" font-weight="normal" fill="#334155">  Arquitectura modular no bloqueante</text>
+<text x="400" y="242" font-size="12" font-weight="normal" fill="#334155">  Algoritmo Heat Index NOAA Rothfusz</text>
+<text x="400" y="280" font-size="13" font-weight="bold" fill="#0f172a">• Actuador 1: Ventilador 5V</text>
+<text x="400" y="302" font-size="12" font-weight="normal" fill="#334155">  Low-Side Switch NPN en GPIO 23</text>
+<text x="400" y="322" font-size="12" font-weight="normal" fill="#334155">  Diodo flyback antiparalelo</text>
+<text x="400" y="360" font-size="13" font-weight="bold" fill="#0f172a">• Actuador 2: LED RGB (NOM-015)</text>
+<text x="400" y="382" font-size="12" font-weight="normal" fill="#334155">  Semáforo Verde/Amarillo/Rojo</text>
+<text x="400" y="402" font-size="12" font-weight="normal" fill="#334155">  GPIO 25, 26, 27 con R 220 Ω</text>
+<text x="400" y="440" font-size="13" font-weight="bold" fill="#0f172a">• OLED SSD1306 Local (0x3C):</text>
+<text x="400" y="462" font-size="12" font-weight="normal" fill="#334155">  Alternancia de vistas cada 3s</text>
+<text x="400" y="500" font-size="13" font-weight="bold" fill="#0f172a">• Reglas Autónomas:</text>
+<text x="400" y="522" font-size="12" font-weight="normal" fill="#334155">  AUTO: Calor + Presencia</text>
+<text x="400" y="542" font-size="12" font-weight="normal" fill="#334155">  Timeout 30s desocupado</text>
+<text x="400" y="562" font-size="12" font-weight="normal" fill="#334155">  Purga manual: timer 60s anti-olvido</text>
+<text x="750" y="200" font-size="13" font-weight="bold" fill="#0f172a">• Mosquitto MQTT Broker:</text>
+<text x="750" y="222" font-size="12" font-weight="normal" fill="#334155">  Puerto estándar 1883 en 0.0.0.0</text>
+<text x="750" y="242" font-size="12" font-weight="normal" fill="#334155">  Autenticación por usuario y hash</text>
+<text x="750" y="280" font-size="13" font-weight="bold" fill="#0f172a">• Tópicos de Telemetría:</text>
+<text x="750" y="302" font-size="12" font-weight="normal" fill="#334155">  yucatan/bioclima/sensor/+</text>
+<text x="750" y="322" font-size="12" font-weight="normal" fill="#334155">  yucatan/bioclima/telemetria (JSON)</text>
+<text x="750" y="360" font-size="13" font-weight="bold" fill="#0f172a">• Lazo Cerrado Desacoplado:</text>
+<text x="750" y="382" font-size="12" font-weight="normal" fill="#334155">  .../actuador/ventilador/set</text>
+<text x="750" y="402" font-size="12" font-weight="normal" fill="#334155">  .../actuador/ventilador/estado</text>
+<text x="750" y="440" font-size="13" font-weight="bold" fill="#0f172a">• Mecanismo LWT:</text>
+<text x="750" y="462" font-size="12" font-weight="normal" fill="#334155">  yucatan/bioclima/status</text>
+<text x="750" y="482" font-size="12" font-weight="normal" fill="#334155">  online / offline retenido</text>
+<text x="1080" y="200" font-size="13" font-weight="bold" fill="#0f172a">• Dashboard 2.0 Web:</text>
+<text x="1080" y="222" font-size="12" font-weight="normal" fill="#334155">  Acceso: /dashboard/bioclima</text>
+<text x="1080" y="242" font-size="12" font-weight="normal" fill="#334155">  Tema adaptativo responsive</text>
+<text x="1080" y="280" font-size="13" font-weight="bold" fill="#0f172a">• Instrumentación Visual:</text>
+<text x="1080" y="302" font-size="12" font-weight="normal" fill="#334155">  Gauges Temp, Hum, HI, Luz</text>
+<text x="1080" y="322" font-size="12" font-weight="normal" fill="#334155">  Gráfica de tendencia temporal</text>
+<text x="1080" y="342" font-size="12" font-weight="normal" fill="#334155">  Indicador de ocupación PIR</text>
+<text x="1080" y="380" font-size="13" font-weight="bold" fill="#0f172a">• Mandos de Control Remoto:</text>
+<text x="1080" y="402" font-size="12" font-weight="normal" fill="#334155">  Switch desacoplado de ventilador</text>
+<text x="1080" y="422" font-size="12" font-weight="normal" fill="#334155">  Selector AUTO / MANUAL</text>
+<text x="1080" y="442" font-size="12" font-weight="normal" fill="#334155">  Aviso de retorno de purga</text>
+<text x="1080" y="480" font-size="13" font-weight="bold" fill="#0f172a">• Evaluador / Supervisor:</text>
+<text x="1080" y="502" font-size="12" font-weight="normal" fill="#334155">  M.I. Javier Poot / Equipo UPY</text>
+<line x1="340" y1="250" x2="380" y2="250" stroke="#0284c7" stroke-width="3" stroke-dasharray="4,4"/>
+<line x1="340" y1="340" x2="380" y2="340" stroke="#0284c7" stroke-width="3" stroke-dasharray="4,4"/>
+<line x1="690" y1="310" x2="730" y2="310" stroke="#16a34a" stroke-width="3" stroke-dasharray="4,4"/>
+<line x1="730" y1="390" x2="690" y2="390" stroke="#ea580c" stroke-width="3" stroke-dasharray="4,4"/>
+<line x1="1020" y1="310" x2="1060" y2="310" stroke="#ea580c" stroke-width="3" stroke-dasharray="4,4"/>
+<line x1="1060" y1="390" x2="1020" y2="390" stroke="#7c3aed" stroke-width="3" stroke-dasharray="4,4"/>
+</svg>
