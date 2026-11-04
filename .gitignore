@@ -1,0 +1,33 @@
+# ==========================================
+# Repositorios previos clonados (REFERENCIA)
+# ==========================================
+Multisensor_IoT_Device_ESP32/
+esp32-monitoreo-ambiental-iot/
+
+# ==========================================
+# PlatformIO / Firmware Build Artifacts
+# ==========================================
+.pio/
+.pioenvs/
+.piolibdeps/
+.vscode/
+*.bin
+*.elf
+*.hex
+
+# ==========================================
+# Python, Entornos Virtuales y Temporales
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# ==========================================
+# Archivos de Sistema Operativo
+# ==========================================
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
