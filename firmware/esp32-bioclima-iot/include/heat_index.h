@@ -1,7 +1,9 @@
 #ifndef HEAT_INDEX_H
 #define HEAT_INDEX_H
 
+#ifdef ARDUINO
 #include <Arduino.h>
+#endif
 #include <math.h>
 
 // ============================================================================
@@ -51,7 +53,8 @@ inline float calcularIndiceCalor(float tempC, float humRel) {
 
         // Factor de ajuste para humedades relativas bajas (< 13%)
         if (rh < 13.0f && tf >= 80.0f && tf <= 112.0f) {
-            float adj = ((13.0f - rh) / 4.0f) * sqrtf((17.0f - fabsf(tf - 95.0f)) / 17.0f);
+            float term = (17.0f - fabsf(tf - 95.0f)) / 17.0f;
+            float adj = ((13.0f - rh) / 4.0f) * sqrtf(fmaxf(0.0f, term));
             hi -= adj;
         }
         // Factor de ajuste para humedades relativas altas (> 85%)

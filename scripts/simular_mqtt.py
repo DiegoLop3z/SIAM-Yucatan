@@ -185,17 +185,17 @@ def main():
                             client.publish(TOPIC_FAN_ESTADO, "OFF", retain=True)
                         print("  >> [AUTO DESACTIVA] Ventilador OFF por Histéresis Térmica")
             elif estado["modo"] == "MANUAL":
-                # Temporizador anti-olvido (simulado a 20 s en la prueba o 60s)
-                if estado["fan"] == "ON" and (ahora - estado["tiempo_inicio_manual"] >= 20):
-                    print("  >> [PROTECCIÓN ANTI-OLVIDO] Expiró tiempo manual. Retorno autónomo a AUTO.")
+                # Temporizador anti-olvido (60 s conforme al firmware y especificacion de demo)
+                if (ahora - estado["tiempo_inicio_manual"] >= 60):
+                    print("  >> [PROTECCION ANTI-OLVIDO] Expiro tiempo manual (60 s). Retorno autonomo a AUTO.")
                     estado["modo"] = "AUTO"
                     if client:
                         client.publish(TOPIC_MODO_ESTADO, "AUTO", retain=True)
-                    if presencia == 0:
+                    condicion_activa = (hi >= 38.0 or temp >= estado["umbral_temp"]) and presencia == 1
+                    if not condicion_activa:
                         estado["fan"] = "OFF"
                         if client:
                             client.publish(TOPIC_FAN_ESTADO, "OFF", retain=True)
-
             if presencia == 1:
                 estado["tiempo_ultima_presencia"] = ahora
 

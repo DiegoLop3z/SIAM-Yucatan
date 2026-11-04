@@ -648,9 +648,13 @@ def generar_placeholder_protoboard_actuacion(salida_png):
     # Ventilador en rotación
     fan_circle = patches.Circle((4.0, 4.0), 2.2, facecolor='#1e293b', edgecolor='#22c55e', linewidth=4)
     ax.add_patch(fan_circle)
-    # Aspas dinámicas
-    for angle in [0, 60, 120, 180, 240, 300]:
-        ax.text(4.0, 4.0, "🌀", fontsize=65, ha='center', va='center', color='#4ade80')
+    # Aspas dinámicas vectoriales
+    for angle in [0, 90, 180, 270]:
+        blade = patches.Wedge((4.0, 4.0), 1.9, angle, angle + 45, width=1.4, facecolor='#22c55e', alpha=0.85)
+        ax.add_patch(blade)
+    center_hub = patches.Circle((4.0, 4.0), 0.6, facecolor='#0f172a', edgecolor='#4ade80', linewidth=2)
+    ax.add_patch(center_hub)
+    ax.text(4.0, 4.0, "5V", fontsize=15, fontweight='bold', ha='center', va='center', color='#4ade80')
 
     ax.text(4.0, 1.4, "VENTILADOR 5V EN ROTACIÓN\n(Transistor NPN Saturado: 140 mA a GND)", fontsize=11, fontweight='bold', color='#4ade80', ha='center')
 
@@ -659,7 +663,7 @@ def generar_placeholder_protoboard_actuacion(salida_png):
     ax.add_patch(led_circle)
     glow_circle = patches.Circle((8.5, 4.0), 2.1, facecolor='none', edgecolor='#ef4444', linewidth=2, linestyle='--')
     ax.add_patch(glow_circle)
-    ax.text(8.5, 4.0, "🔴", fontsize=50, ha='center', va='center')
+    ax.text(8.5, 4.0, "ALERTA\nACTIVA", fontsize=13, fontweight='bold', color='#ffffff', ha='center', va='center')
     ax.text(8.5, 1.4, "LED RGB SEMÁFORO (ROJO)\n(Alerta Crítica: Heat Index >= 38 °C)", fontsize=11, fontweight='bold', color='#ef4444', ha='center')
 
     ax.text(6.0, 0.6, "[Instrucción para Arturo: Reemplazar por fotografía real en primer plano del ventilador girando y LED encendido]", fontsize=9, color='#94a3b8', ha='center', style='italic')
@@ -679,7 +683,7 @@ def generar_placeholder_dashboard_telemetria(salida_png):
     top = patches.Rectangle((0, 8.0), 14, 1.0, facecolor='#1e293b')
     ax.add_patch(top)
     ax.text(0.5, 8.5, "SIAM-Yucatán — Monitoreo Bioclimático & Estrés Térmico (Node-RED Dashboard 2.0)", fontsize=13, fontweight='bold', color='#ffffff', va='center')
-    ax.text(13.5, 8.5, "🟢 Enlace LWT: ONLINE", fontsize=11, fontweight='bold', color='#4ade80', va='center', ha='right')
+    ax.text(13.5, 8.5, "[ONLINE] Enlace LWT: ACTIVO", fontsize=11, fontweight='bold', color='#4ade80', va='center', ha='right')
 
     # 4 Gauges
     gauges_data = [
@@ -711,10 +715,10 @@ def generar_placeholder_dashboard_telemetria(salida_png):
     status_box = patches.FancyBboxPatch((9.0, 1.4), 4.4, 3.2, boxstyle="round,pad=0.1", facecolor='#ffffff', edgecolor='#cbd5e1', linewidth=1.5)
     ax.add_patch(status_box)
     ax.text(9.3, 4.2, "Diagnóstico Bioclimático NOM-015", fontsize=11, fontweight='bold', color='#0f172a')
-    ax.text(9.3, 3.6, "• Semáforo: 🔴 PELIGRO CRÍTICO", fontsize=10, fontweight='bold', color='#dc2626')
-    ax.text(9.3, 3.1, "• Presencia: 🚶 DETECTADA (Sala ocupada)", fontsize=10, fontweight='bold', color='#16a34a')
-    ax.text(9.3, 2.6, "• Ventilador: 🌀 ACTIVADO (Disipando)", fontsize=10, fontweight='bold', color='#0284c7')
-    ax.text(9.3, 2.1, "• Modo: 🤖 AUTOMÁTICO", fontsize=10, fontweight='bold', color='#475569')
+    ax.text(9.3, 3.6, "• Semáforo: [ROJO] PELIGRO CRÍTICO", fontsize=10, fontweight='bold', color='#dc2626')
+    ax.text(9.3, 3.1, "• Presencia: [SI] DETECTADA (Sala ocupada)", fontsize=10, fontweight='bold', color='#16a34a')
+    ax.text(9.3, 2.6, "• Ventilador: [ON] ACTIVADO (Disipando)", fontsize=10, fontweight='bold', color='#0284c7')
+    ax.text(9.3, 2.1, "• Modo: [AUTO] AUTOMÁTICO", fontsize=10, fontweight='bold', color='#475569')
 
     ax.text(7.0, 0.6, "[Captura representativa de Node-RED Dashboard 2.0 en operación continua]", fontsize=9.5, color='#64748b', ha='center', style='italic')
 
@@ -748,18 +752,18 @@ def generar_placeholder_dashboard_control(salida_png):
     ax.add_patch(sw_knob)
     ax.text(2.1, 5.6, "ON", fontsize=11, fontweight='bold', color='#ffffff', va='center')
 
-    ax.text(4.2, 5.6, "Estado Real Físico Confirmado: 🌀 EN REVOLUCIÓN (Transistor Saturado / Extracción Activa)", fontsize=11, fontweight='bold', color='#15803d', va='center')
+    ax.text(4.2, 5.6, "Estado Real Físico Confirmado: [ON] EN REVOLUCIÓN (Transistor Saturado / Extracción Activa)", fontsize=11, fontweight='bold', color='#15803d', va='center')
 
     # Tarjeta Modo y Purga Anti-Olvido
     mode_ctrl = patches.FancyBboxPatch((1.0, 1.5), 12.0, 2.6, boxstyle="round,pad=0.15", facecolor='#ffffff', edgecolor='#ea580c', linewidth=2)
     ax.add_patch(mode_ctrl)
     ax.text(1.5, 3.6, "Gestión de Modo Operativo y Protección Anti-Fallo Humano", fontsize=13, fontweight='bold', color='#9a3412')
-    ax.text(1.5, 3.0, "Modo Activo Confirmado: ⚙️ MANUAL (Purga Térmica Previa en Proceso)", fontsize=11, fontweight='bold', color='#ea580c')
+    ax.text(1.5, 3.0, "Modo Activo Confirmado: [MANUAL] (Purga Térmica Previa en Proceso)", fontsize=11, fontweight='bold', color='#ea580c')
 
     # Caja de advertencia de timer
     alert_box = patches.FancyBboxPatch((1.5, 1.9), 11.0, 0.8, boxstyle="round,pad=0.08", facecolor='#fff7ed', edgecolor='#f97316', linewidth=1.5)
     ax.add_patch(alert_box)
-    ax.text(1.8, 2.3, "⏱️ TEMPORIZADOR ANTI-OLVIDO ACTIVO: Retorno autónomo a MODO AUTO en 60 segundos (Evita consumo innecesario).", fontsize=10, fontweight='bold', color='#c2410c', va='center')
+    ax.text(1.8, 2.3, "[TEMPORIZADOR ANTI-OLVIDO ACTIVO] Retorno autónomo a MODO AUTO en 60 segundos (Evita consumo innecesario).", fontsize=10, fontweight='bold', color='#c2410c', va='center')
 
     ax.text(7.0, 0.7, "[Demostración en vivo de conmutación en lazo cerrado desacoplado y temporizador anti-olvido]", fontsize=9.5, color='#64748b', ha='center', style='italic')
 

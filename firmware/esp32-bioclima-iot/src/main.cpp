@@ -5,7 +5,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include "Adafruit_SHT4x.h"
+#include <Adafruit_SHT4x.h>
 
 #include "config.h"
 #include "heat_index.h"
@@ -284,12 +284,14 @@ void evaluarAutomatizaciones(unsigned long ahora) {
     } 
     else if (modoActual == MODO_MANUAL) {
         // Regla 3: Protección Anti-Fallo Humano por Olvido
-        // Si el ventilador está encendido en manual, no permitir que quede prendido indefinidamente.
-        if (ventiladorEncendido && ((ahora - tiempoInicioManual) >= DURACION_MODO_MANUAL_MS)) {
+        // Retorno autónomo a modo AUTO tras DURACION_MODO_MANUAL_MS (60 s en demo / 30 min en campo)
+        if ((ahora - tiempoInicioManual) >= DURACION_MODO_MANUAL_MS) {
             Serial.println("[MANUAL] Expiró el temporizador de purga (60 s). Retorno autónomo a modo AUTO.");
             establecerModo(MODO_AUTO);
-            // Al regresar a AUTO, reevaluamos de inmediato; si no hay presencia, se apaga
-            if (!presenciaActual) {
+            // Al regresar a AUTO, reevaluamos de inmediato la condición ambiental
+            bool condicionTermicaActiva = (indiceCalorActual >= umbralHeatIndex) || 
+                                         (temperaturaActual >= umbralTemperatura);
+            if (!(condicionTermicaActiva && presenciaActual)) {
                 aplicarVentilador(false);
             }
         }
@@ -316,19 +318,19 @@ void publicarTelemetria() {
     mqttClient.publish(TOPIC_MODO_ESTADO, modoActual == MODO_AUTO ? "AUTO" : "MANUAL", true);
 
     // 2. Payload unificado en JSON para histórico, base de datos y procesamiento global
-    StaticJsonDocument<300> doc;
-    doc["temp"] = serialized(String(temperaturaActual, 1));
-    doc["hum"] = serialized(String(humedadActual, 1));
-    doc["hi"] = serialized(String(indiceCalorActual, 1));
+    JsonDocument doc;
+    doc["temp"] = round(temperaturaActual * 10.0f) / 10.0f;
+    doc["hum"] = round(humedadActual * 10.0f) / 10.0f;
+    doc["hi"] = round(indiceCalorActual * 10.0f) / 10.0f;
     doc["luz"] = ldrPorcentaje;
     doc["pres"] = presenciaActual ? 1 : 0;
     doc["fan"] = ventiladorEncendido ? 1 : 0;
     doc["modo"] = (modoActual == MODO_AUTO) ? "AUTO" : "MANUAL";
     doc["alerta"] = obtenerNombreAlerta(alertaActual);
 
-    char jsonBuffer[300];
-    serializeJson(doc, jsonBuffer);
-    mqttClient.publish(TOPIC_TELEMETRIA, jsonBuffer);
+    char jsonBuffer[384];
+    size_t n = serializeJson(doc, jsonBuffer, sizeof(jsonBuffer));
+    mqttClient.publish(TOPIC_TELEMETRIA, (const uint8_t*)jsonBuffer, n, false);
 
     Serial.print("[MQTT PUB] ");
     Serial.println(jsonBuffer);
@@ -534,9 +536,10 @@ void setup() {
 void loop() {
     unsigned long ahora = millis();
 
-    // 1. Mantenimiento de Conexiones de Red (No bloqueante)
+    // 1. Mantenimiento de Conexiones de Red y Señalización Bioclimática
     mantenerConexiones(ahora);
     actualizarLedRed(ahora);
+    actualizarSemaforoRgb(alertaActual, ahora);
 
     // 2. Ciclo de Lectura, Automatización y Telemetría cada 2000 ms
     if (ahora - ultimaTelemetriaMs >= INTERVALO_TELEMETRIA_MS) {
