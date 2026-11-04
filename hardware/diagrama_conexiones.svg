@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1260" viewBox="0 0 1500 1260" font-family="DejaVu Sans, Arial, sans-serif">
+<rect width="1500" height="1260" fill="#ffffff"/>
+<text x="40" y="44" font-size="24" font-weight="bold" fill="#0f172a">Diagrama Electrónico de Conexiones — Sistema SIAM-Yucatán</text>
+<text x="40" y="70" font-size="14" fill="#475569">UPY 2026 · SHT41 + OLED (I²C GPIO 21/22) · LDR (GPIO 34 ADC1) · PIR (GPIO 35) · NPN Low-Side Switch Ventilador 5V (GPIO 23) · LED RGB (GPIO 25/26/27)</text>
+<rect x="580" y="110" width="310" height="640" rx="12" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+<path d="M685 125 h20 v14 h20 v-14 h20 v14 h20 v-14 h20" fill="none" stroke="#f59e0b" stroke-width="3"/>
+<rect x="675" y="155" width="120" height="230" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+<text x="735" y="270" font-size="11" font-weight="bold" fill="#1e293b" text-anchor="middle">ESP-WROOM-32</text>
+<text x="735" y="425" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">ESP32 DevKit V1</text>
+<text x="735" y="447" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="middle">(Dual-Core 240MHz · Wi-Fi/MQTT)</text>
+<rect x="705" y="744" width="60" height="22" rx="3" fill="#94a3b8" stroke="#64748b"/>
+<text x="735" y="784" font-size="11" font-weight="normal" fill="#64748b" text-anchor="middle">USB Datos / Alimentación 5V</text>
+<circle cx="596" cy="190" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="608" y="194" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="start">EN</text>
+<circle cx="874" cy="190" r="6.5" fill="#26a269" stroke="#fff" stroke-width="1.5"/>
+<text x="862" y="194" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="end">D23</text>
+<circle cx="596" cy="226" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="608" y="230" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="start">VP</text>
+<circle cx="874" cy="226" r="6.5" fill="#e5a50a" stroke="#fff" stroke-width="1.5"/>
+<text x="862" y="230" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="end">D22</text>
+<circle cx="596" cy="262" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="608" y="266" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="start">VN</text>
+<circle cx="874" cy="262" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="862" y="266" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="end">TX0</text>
+<circle cx="596" cy="298" r="6.5" fill="#9141ac" stroke="#fff" stroke-width="1.5"/>
+<text x="608" y="302" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="start">D34</text>
+<circle cx="874" cy="298" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="862" y="302" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="end">RX0</text>
+<circle cx="596" cy="334" r="6.5" fill="#008080" stroke="#fff" stroke-width="1.5"/>
+<text x="608" y="338" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="start">D35</text>
+<circle cx="874" cy="334" r="6.5" fill="#1c71d8" stroke="#fff" stroke-width="1.5"/>
+<text x="862" y="338" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="end">D21</text>
+<circle cx="596" cy="370" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="608" y="374" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="start">D32</text>
+<circle cx="874" cy="370" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="862" y="374" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="end">D19</text>
+<circle cx="596" cy="406" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="608" y="410" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="start">D33</text>
+<circle cx="874" cy="406" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="862" y="410" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="end">D18</text>
+<circle cx="596" cy="442" r="6.5" fill="#e01b24" stroke="#fff" stroke-width="1.5"/>
+<text x="608" y="446" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="start">D25</text>
+<circle cx="874" cy="442" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="862" y="446" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="end">D5</text>
+<circle cx="596" cy="478" r="6.5" fill="#2ec27e" stroke="#fff" stroke-width="1.5"/>
+<text x="608" y="482" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="start">D26</text>
+<circle cx="874" cy="478" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="862" y="482" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="end">TX2</text>
+<circle cx="596" cy="514" r="6.5" fill="#3584e4" stroke="#fff" stroke-width="1.5"/>
+<text x="608" y="518" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="start">D27</text>
+<circle cx="874" cy="514" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="862" y="518" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="end">RX2</text>
+<circle cx="596" cy="550" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="608" y="554" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="start">D14</text>
+<circle cx="874" cy="550" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="862" y="554" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="end">D4</text>
+<circle cx="596" cy="586" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="608" y="590" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="start">D12</text>
+<circle cx="874" cy="586" r="6.5" fill="#1a5fb4" stroke="#fff" stroke-width="1.5"/>
+<text x="862" y="590" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="end">D2</text>
+<circle cx="596" cy="622" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="608" y="626" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="start">D13</text>
+<circle cx="874" cy="622" r="4.5" fill="#64748b" stroke="#fff" stroke-width="0"/>
+<text x="862" y="626" font-size="12" font-weight="normal" fill="#94a3b8" text-anchor="end">D15</text>
+<circle cx="596" cy="658" r="6.5" fill="#222222" stroke="#fff" stroke-width="1.5"/>
+<text x="608" y="662" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="start">GND</text>
+<circle cx="874" cy="658" r="6.5" fill="#222222" stroke="#fff" stroke-width="1.5"/>
+<text x="862" y="662" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="end">GND</text>
+<circle cx="596" cy="694" r="6.5" fill="#ff6b35" stroke="#fff" stroke-width="1.5"/>
+<text x="608" y="698" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="start">VIN</text>
+<circle cx="874" cy="694" r="6.5" fill="#d62728" stroke="#fff" stroke-width="1.5"/>
+<text x="862" y="698" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="end">3V3</text>
+<rect x="40" y="110" width="430" height="145" rx="8" fill="#fdf4ff" stroke="#c026d3" stroke-width="2"/>
+<text x="56" y="136" font-size="14" font-weight="bold" fill="#86198f" text-anchor="start">Sensor de Iluminación — LDR (ADC1)</text>
+<text x="56" y="156" font-size="11.5" font-weight="normal" fill="#475569" text-anchor="start">Divisor: 3.3V → LDR → GPIO 34 → R 10kΩ → GND</text>
+<text x="56" y="178" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Pin ADC1_CH6 (GPIO 34): Lectura analógica inmune a Wi-Fi</text>
+<text x="56" y="198" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Conversión: 0..4095 ADC → 0..100% de iluminancia laboral</text>
+<text x="456" y="234" font-size="11.5" font-weight="bold" fill="#86198f" text-anchor="end">Nodo Divisor (OUT) → GPIO 34</text>
+<path d="M 470 230 L 510 230 L 510 298 L 596 298" fill="none" stroke="#9141ac" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="275" width="430" height="130" rx="8" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+<text x="56" y="301" font-size="14" font-weight="bold" fill="#115e59" text-anchor="start">Sensor de Presencia — PIR HC-SR501 / AM312</text>
+<text x="56" y="321" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Salida digital 3.3V hacia GPIO 35 · Lente Fresnel 100°</text>
+<text x="56" y="343" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Timeout de desocupación: 30s sin presencia apaga el ventilador</text>
+<text x="456" y="338" font-size="11.5" font-weight="bold" fill="#115e59" text-anchor="end">Señal OUT → GPIO 35</text>
+<path d="M 470 334 L 596 334" fill="none" stroke="#008080" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="425" width="430" height="270" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="56" y="451" font-size="14" font-weight="bold" fill="#9a3412" text-anchor="start">Semáforo Bioclimático — LED RGB (NOM-015)</text>
+<text x="56" y="471" font-size="11.5" font-weight="normal" fill="#475569" text-anchor="start">3× Resistores limitadores de 220 Ω · Cátodo Común a GND</text>
+<path d="M 470 505 L 490 505 L 490 442 L 596 442" fill="none" stroke="#e01b24" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="58" y="509" font-size="11.5" font-weight="bold" fill="#e01b24" text-anchor="start">R (220 Ω) ← GPIO 25 (Rojo: HI &gt;= 38°C Peligro)</text>
+<path d="M 470 550 L 506 550 L 506 478 L 596 478" fill="none" stroke="#2ec27e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="58" y="554" font-size="11.5" font-weight="bold" fill="#2ec27e" text-anchor="start">G (220 Ω) ← GPIO 26 (Verde: HI &lt; 30°C Confort)</text>
+<path d="M 470 595 L 522 595 L 522 514 L 596 514" fill="none" stroke="#3584e4" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="58" y="599" font-size="11.5" font-weight="bold" fill="#3584e4" text-anchor="start">B (220 Ω) ← GPIO 27 (Azul: Diagnóstico de Modo)</text>
+<path d="M 596 658 L 545 658 L 545 665 L 470 665" fill="none" stroke="#222222" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="456" y="669" font-size="11.5" font-weight="bold" fill="#222" text-anchor="end">GND Común (LDR, PIR, Cátodo RGB)</text>
+<path d="M 596 694 L 560 694 L 560 383 L 470 383" fill="none" stroke="#ff6b35" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="456" y="379" font-size="11.5" font-weight="bold" fill="#ff6b35" text-anchor="end">VCC PIR ← 5V (VIN)</text>
+<rect x="1010" y="110" width="450" height="200" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="1028" y="136" font-size="14" font-weight="bold" fill="#166534" text-anchor="start">Etapa de Potencia — Transistor NPN (Low-Side Switch)</text>
+<text x="1028" y="156" font-size="11.5" font-weight="normal" fill="#475569" text-anchor="start">Ventilador 5V DC (140 mA) · Desacoplo de 3.3V a 5V de potencia</text>
+<text x="1028" y="178" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Base (B): Resistor Rb 1 kΩ inyecta 2.6 mA desde GPIO 23</text>
+<text x="1028" y="198" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Colector (C): Al borne (-) del motor y ánodo diodo Flyback</text>
+<text x="1028" y="218" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Emisor (E): Conectado directamente a GND común</text>
+<text x="1028" y="238" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Diodo Flyback (1N4001): Antiparalelo con cátodo a +5V (Protección fem)</text>
+<text x="1028" y="286" font-size="12" font-weight="bold" fill="#26a269" text-anchor="start">Base NPN (Rb 1 kΩ) ← GPIO 23</text>
+<path d="M 874 190 L 975 190 L 975 282 L 1010 282" fill="none" stroke="#26a269" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 874 226 L 920 226 L 920 660" fill="none" stroke="#e5a50a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 874 334 L 945 334 L 945 690" fill="none" stroke="#1c71d8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 874 658 L 965 658 L 965 420" fill="none" stroke="#222222" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 874 694 L 985 694 L 985 390" fill="none" stroke="#d62728" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1010" y="330" width="450" height="165" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1028" y="356" font-size="14" font-weight="bold" fill="#1e40af" text-anchor="start">Sensor Ambiental — Sensirion GY-SHT41 (I²C 0x44)</text>
+<text x="1028" y="378" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Temp (±0.2 °C) y Humedad Relativa (±1.8 % RH) de alta fidelidad</text>
+<text x="1028" y="400" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Alimenta el cálculo del Índice de Calor (Heat Index NOAA Rothfusz)</text>
+<text x="1028" y="430" font-size="11.5" font-weight="bold" fill="#e5a50a" text-anchor="start">SCL ← GPIO 22</text>
+<text x="1028" y="450" font-size="11.5" font-weight="bold" fill="#1c71d8" text-anchor="start">SDA ← GPIO 21</text>
+<text x="1028" y="470" font-size="11.5" font-weight="bold" fill="#475569" text-anchor="start">VCC ← 3V3 · GND ← GND</text>
+<path d="M 920 426 L 1010 426" fill="none" stroke="#e5a50a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 945 446 L 1010 446" fill="none" stroke="#1c71d8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 985 466 L 1010 466" fill="none" stroke="#d62728" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1010" y="515" width="450" height="175" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<text x="1028" y="541" font-size="14" font-weight="bold" fill="#334155" text-anchor="start">Pantalla Local — OLED 128×32 SSD1306 (I²C 0x3C)</text>
+<text x="1028" y="563" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Comparte bus I²C (GPIO 21/22) con el sensor SHT41 sin colisión</text>
+<text x="1028" y="585" font-size="11.5" font-weight="normal" fill="#334155" text-anchor="start">• Despliega métricas in situ, IP local y estado FAN / MODO</text>
+<text x="1028" y="615" font-size="11.5" font-weight="bold" fill="#e5a50a" text-anchor="start">SCL ← GPIO 22</text>
+<text x="1028" y="635" font-size="11.5" font-weight="bold" fill="#1c71d8" text-anchor="start">SDA ← GPIO 21</text>
+<text x="1028" y="655" font-size="11.5" font-weight="bold" fill="#475569" text-anchor="start">VCC ← 3V3 · GND ← GND</text>
+<path d="M 920 611 L 1010 611" fill="none" stroke="#e5a50a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 945 631 L 1010 631" fill="none" stroke="#1c71d8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 985 651 L 1010 651" fill="none" stroke="#d62728" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 874 586 L 955 586 L 955 725 L 1010 725" fill="none" stroke="#1a5fb4" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1010" y="705" width="450" height="45" rx="8" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+<text x="1025" y="732" font-size="11.5" font-weight="bold" fill="#1d4ed8" text-anchor="start">LED Azul Onboard (GPIO 2): Monitor Enlace Wi-Fi / Broker MQTT</text>
+<rect x="40" y="770" width="1420" height="450" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<text x="60" y="805" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="start">RESUMEN DE ARQUITECTURA DE ENERGÍA Y PROTECCIÓN ELÉCTRICA</text>
+<text x="60" y="835" font-size="12" font-weight="normal" fill="#334155" text-anchor="start">1. Línea 5V (VIN / USB): Suministra energía a la bobina del ventilador y al sensor PIR. Corriente hasta 140 mA absorbida directamente del puerto USB.</text>
+<text x="60" y="860" font-size="12" font-weight="normal" fill="#334155" text-anchor="start">2. Línea 3.3V (ESP32 3V3): Alimenta el sensor Sensirion SHT41, pantalla OLED SSD1306 y divisor de la fotocelda LDR. Corriente total &lt; 25 mA.</text>
+<text x="60" y="885" font-size="12" font-weight="normal" fill="#334155" text-anchor="start">3. Etapa de Transistor NPN (Low-Side Switch): Desacopla la lógica de control (3.3V / 2.6 mA en GPIO 23) de la potencia inductiva (5V / 140 mA en ventilador).</text>
+<text x="60" y="910" font-size="12" font-weight="normal" fill="#334155" text-anchor="start">4. Diodo Flyback en Antiparalelo: Elimina pulsos destructivos de contratensión inductiva (f.e.m. inversa) al conmutar a corte el ventilador.</text>
+<text x="60" y="935" font-size="12" font-weight="normal" fill="#334155" text-anchor="start">5. Tierra Común (GND): Todas las masas (ESP32, emisor NPN, GND del ventilador, OLED, SHT41, PIR y LDR) están interconectadas a la misma referencia.</text>
+<text x="60" y="960" font-size="12" font-weight="normal" fill="#334155" text-anchor="start">6. Pines Analógicos Seguros: LDR conectado exclusivamente a GPIO 34 (ADC1), garantizando operación sin colisión con el módem de radio Wi-Fi.</text>
+</svg>
