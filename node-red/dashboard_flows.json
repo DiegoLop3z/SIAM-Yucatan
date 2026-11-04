@@ -1,0 +1,737 @@
+[
+    {
+        "id": "tab_bioclima_siam",
+        "type": "tab",
+        "label": "SIAM-Yucatán: Bioclima & Ventilador NPN",
+        "disabled": false,
+        "info": "Sistema Inteligente de Monitoreo Ambiental, Estrés Térmico y Mitigación Bioclimática (SIAM-Yucatán)\nUniversidad Politécnica de Yucatán (UPY) - Ciclo 2026\nAutores: Diego López Pérez (@DiegoLop3z) & Arturo Heredia Martín (@arturoherediam)\n\nTópicos MQTT:\n- yucatan/bioclima/sensor/temperatura, humedad, indice_calor, luz, presencia\n- yucatan/bioclima/actuador/ventilador/set y .../estado (Lazo cerrado desacoplado)\n- yucatan/bioclima/actuador/modo/set y .../estado (Temporizador anti-olvido 60s)\n- yucatan/bioclima/config/umbral_temp\n- yucatan/bioclima/status (LWT: online/offline)",
+        "env": []
+    },
+    {
+        "id": "comment_telemetria",
+        "type": "comment",
+        "z": "tab_bioclima_siam",
+        "name": "① Telemetría de Sensores (ESP32 → Node-RED)",
+        "info": "Recepción de métricas ambientales del sensor SHT41, cálculo de Heat Index NOAA, LDR y PIR.",
+        "x": 210,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "mqtt_in_temp",
+        "type": "mqtt in",
+        "z": "tab_bioclima_siam",
+        "name": "MQTT Temp (°C)",
+        "topic": "yucatan/bioclima/sensor/temperatura",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "broker_mosquitto_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "gauge_temp",
+                "chart_bioclima"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_hum",
+        "type": "mqtt in",
+        "z": "tab_bioclima_siam",
+        "name": "MQTT Hum (%)",
+        "topic": "yucatan/bioclima/sensor/humedad",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "broker_mosquitto_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "gauge_hum"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_heat_index",
+        "type": "mqtt in",
+        "z": "tab_bioclima_siam",
+        "name": "MQTT Heat Index (°C)",
+        "topic": "yucatan/bioclima/sensor/indice_calor",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "broker_mosquitto_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "gauge_heat_index",
+                "chart_bioclima",
+                "fn_evaluar_alerta"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_luz",
+        "type": "mqtt in",
+        "z": "tab_bioclima_siam",
+        "name": "MQTT Luz LDR (%)",
+        "topic": "yucatan/bioclima/sensor/luz",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "broker_mosquitto_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "gauge_luz"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_presencia",
+        "type": "mqtt in",
+        "z": "tab_bioclima_siam",
+        "name": "MQTT Presencia PIR",
+        "topic": "yucatan/bioclima/sensor/presencia",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "broker_mosquitto_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 340,
+        "wires": [
+            [
+                "fn_presencia_ui"
+            ]
+        ]
+    },
+    {
+        "id": "gauge_temp",
+        "type": "ui-gauge",
+        "z": "tab_bioclima_siam",
+        "name": "Gauge Temperatura",
+        "group": "group_telemetria",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Temperatura",
+        "units": "°C",
+        "min": "15",
+        "max": "45",
+        "segments": [
+            { "from": "15", "color": "#3584e4" },
+            { "from": "24", "color": "#5cd65c" },
+            { "from": "32", "color": "#e01b24" }
+        ],
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "x": 470,
+        "y": 100,
+        "wires": [[]]
+    },
+    {
+        "id": "gauge_hum",
+        "type": "ui-gauge",
+        "z": "tab_bioclima_siam",
+        "name": "Gauge Humedad",
+        "group": "group_telemetria",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Humedad Relativa",
+        "units": "%",
+        "min": "0",
+        "max": "100",
+        "segments": [
+            { "from": "0", "color": "#ffc800" },
+            { "from": "40", "color": "#5cd65c" },
+            { "from": "70", "color": "#3584e4" }
+        ],
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "x": 460,
+        "y": 160,
+        "wires": [[]]
+    },
+    {
+        "id": "gauge_heat_index",
+        "type": "ui-gauge",
+        "z": "tab_bioclima_siam",
+        "name": "Gauge Sensación Térmica",
+        "group": "group_telemetria",
+        "order": 3,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Índice de Calor (NOAA)",
+        "units": "°C",
+        "min": "20",
+        "max": "55",
+        "segments": [
+            { "from": "20", "color": "#5cd65c" },
+            { "from": "30", "color": "#f6d32d" },
+            { "from": "38", "color": "#e01b24" }
+        ],
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "x": 490,
+        "y": 220,
+        "wires": [[]]
+    },
+    {
+        "id": "gauge_luz",
+        "type": "ui-gauge",
+        "z": "tab_bioclima_siam",
+        "name": "Gauge Luz LDR",
+        "group": "group_telemetria",
+        "order": 4,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Nivel de Iluminación",
+        "units": "%",
+        "min": "0",
+        "max": "100",
+        "segments": [
+            { "from": "0", "color": "#5e5c64" },
+            { "from": "30", "color": "#ffbe6f" },
+            { "from": "70", "color": "#f6d32d" }
+        ],
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "x": 460,
+        "y": 280,
+        "wires": [[]]
+    },
+    {
+        "id": "fn_presencia_ui",
+        "type": "function",
+        "z": "tab_bioclima_siam",
+        "name": "Formato Presencia",
+        "func": "const pres = String(msg.payload).trim();\nif (pres === '1') {\n    msg.payload = '🚶 PRESENCIA DETECTADA';\n    msg.color = '#2ec27e';\n} else {\n    msg.payload = '⚪ ESPACIO DESPEJADO';\n    msg.color = '#777777';\n}\nreturn msg;",
+        "outputs": 1,
+        "x": 440,
+        "y": 340,
+        "wires": [
+            [
+                "txt_presencia"
+            ]
+        ]
+    },
+    {
+        "id": "txt_presencia",
+        "type": "ui-text",
+        "z": "tab_bioclima_siam",
+        "group": "group_telemetria",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "Texto Presencia",
+        "label": "Ocupación en Sala",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 680,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "fn_evaluar_alerta",
+        "type": "function",
+        "z": "tab_bioclima_siam",
+        "name": "Evaluar NOM-015 Semáforo",
+        "func": "const hi = parseFloat(msg.payload);\nif (hi < 30.0) {\n    msg.payload = '🟢 CONFORT TÉRMICO (Trabajo seguro)';\n} else if (hi < 38.0) {\n    msg.payload = '🟡 PRECAUCIÓN (Fatiga térmica / Hidratación requerida)';\n} else {\n    msg.payload = '🔴 PELIGRO CRÍTICO: RIESGO DE GOLPE DE CALOR';\n}\nreturn msg;",
+        "outputs": 1,
+        "x": 480,
+        "y": 390,
+        "wires": [
+            [
+                "txt_alerta_semaforo"
+            ]
+        ]
+    },
+    {
+        "id": "txt_alerta_semaforo",
+        "type": "ui-text",
+        "z": "tab_bioclima_siam",
+        "group": "group_telemetria",
+        "order": 6,
+        "width": 6,
+        "height": 1,
+        "name": "Semáforo NOM-015",
+        "label": "Nivel de Riesgo Bioclimático",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 730,
+        "y": 390,
+        "wires": []
+    },
+    {
+        "id": "chart_bioclima",
+        "type": "ui-chart",
+        "z": "tab_bioclima_siam",
+        "group": "group_graficos",
+        "name": "Histórico Térmico",
+        "label": "Tendencia Térmica en Tiempo Real (°C)",
+        "order": 1,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "msg",
+        "xAxisType": "time",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "yAxisType": "linear",
+        "ymin": "20",
+        "ymax": "55",
+        "action": "append",
+        "pointShape": "circle",
+        "pointRadius": 2,
+        "showLegend": true,
+        "removeOlder": "15",
+        "removeOlderUnit": "60",
+        "width": 6,
+        "height": 5,
+        "x": 680,
+        "y": 140,
+        "wires": [[]]
+    },
+    {
+        "id": "comment_control",
+        "type": "comment",
+        "z": "tab_bioclima_siam",
+        "name": "② Control Remoto y Retorno Anti-Olvido (Lazo Cerrado)",
+        "info": "Switch desacoplado para accionar el transistor NPN del ventilador y selección de modo con purga de 60s.",
+        "x": 230,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "mqtt_in_fan_estado",
+        "type": "mqtt in",
+        "z": "tab_bioclima_siam",
+        "name": "Confirmación Ventilador",
+        "topic": "yucatan/bioclima/actuador/ventilador/estado",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "broker_mosquitto_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 520,
+        "wires": [
+            [
+                "switch_fan",
+                "fn_formato_fan"
+            ]
+        ]
+    },
+    {
+        "id": "switch_fan",
+        "type": "ui-switch",
+        "z": "tab_bioclima_siam",
+        "name": "Switch Ventilador NPN",
+        "label": "Ventilador 5V (Low-Side Switch NPN)",
+        "group": "group_control",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "ON",
+        "onvalueType": "str",
+        "offvalue": "OFF",
+        "offvalueType": "str",
+        "x": 480,
+        "y": 520,
+        "wires": [
+            [
+                "mqtt_out_fan_set"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_out_fan_set",
+        "type": "mqtt out",
+        "z": "tab_bioclima_siam",
+        "name": "Comando Ventilador",
+        "topic": "yucatan/bioclima/actuador/ventilador/set",
+        "qos": "1",
+        "retain": "true",
+        "broker": "broker_mosquitto_local",
+        "x": 730,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "fn_formato_fan",
+        "type": "function",
+        "z": "tab_bioclima_siam",
+        "name": "Formato Texto Ventilador",
+        "func": "const est = String(msg.payload).trim().toUpperCase();\nif (est === 'ON') {\n    msg.payload = '🌀 EN REVOLUCIÓN (Transistor Saturado / Extracción Activa)';\n} else {\n    msg.payload = '⏹ DETENIDO (Transistor en Corte)';\n}\nreturn msg;",
+        "outputs": 1,
+        "x": 490,
+        "y": 570,
+        "wires": [
+            [
+                "txt_fan_estado"
+            ]
+        ]
+    },
+    {
+        "id": "txt_fan_estado",
+        "type": "ui-text",
+        "z": "tab_bioclima_siam",
+        "group": "group_control",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "Texto Estado Ventilador",
+        "label": "Estado Físico Confirmado",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 750,
+        "y": 570,
+        "wires": []
+    },
+    {
+        "id": "mqtt_in_modo_estado",
+        "type": "mqtt in",
+        "z": "tab_bioclima_siam",
+        "name": "Confirmación Modo",
+        "topic": "yucatan/bioclima/actuador/modo/estado",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "broker_mosquitto_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 630,
+        "wires": [
+            [
+                "switch_modo",
+                "fn_formato_modo"
+            ]
+        ]
+    },
+    {
+        "id": "switch_modo",
+        "type": "ui-switch",
+        "z": "tab_bioclima_siam",
+        "name": "Selector Modo Operación",
+        "label": "Modo de Gestión Bioclimática",
+        "group": "group_control",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "MANUAL",
+        "onvalueType": "str",
+        "offvalue": "AUTO",
+        "offvalueType": "str",
+        "x": 490,
+        "y": 630,
+        "wires": [
+            [
+                "mqtt_out_modo_set"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_out_modo_set",
+        "type": "mqtt out",
+        "z": "tab_bioclima_siam",
+        "name": "Comando Modo",
+        "topic": "yucatan/bioclima/actuador/modo/set",
+        "qos": "1",
+        "retain": "true",
+        "broker": "broker_mosquitto_local",
+        "x": 720,
+        "y": 630,
+        "wires": []
+    },
+    {
+        "id": "fn_formato_modo",
+        "type": "function",
+        "z": "tab_bioclima_siam",
+        "name": "Formato Modo y Timer",
+        "func": "const m = String(msg.payload).trim().toUpperCase();\nif (m === 'MANUAL') {\n    msg.payload = '⚙️ MANUAL (Purga iniciada: auto-retorno a AUTO en 60s)';\n} else {\n    msg.payload = '🤖 AUTOMÁTICO (Mitigación por calor + presencia)';\n}\nreturn msg;",
+        "outputs": 1,
+        "x": 480,
+        "y": 680,
+        "wires": [
+            [
+                "txt_modo_estado"
+            ]
+        ]
+    },
+    {
+        "id": "txt_modo_estado",
+        "type": "ui-text",
+        "z": "tab_bioclima_siam",
+        "group": "group_control",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "name": "Texto Estado Modo",
+        "label": "Modo de Operación Activo",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 730,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "comment_conectividad",
+        "type": "comment",
+        "z": "tab_bioclima_siam",
+        "name": "③ Diagnóstico de Red y Broker MQTT (LWT)",
+        "info": "Monitoreo del estado del nodo ESP32 a través del Last Will and Testament.",
+        "x": 200,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "mqtt_in_lwt",
+        "type": "mqtt in",
+        "z": "tab_bioclima_siam",
+        "name": "LWT Estado ESP32",
+        "topic": "yucatan/bioclima/status",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "broker_mosquitto_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 790,
+        "wires": [
+            [
+                "fn_formato_lwt"
+            ]
+        ]
+    },
+    {
+        "id": "fn_formato_lwt",
+        "type": "function",
+        "z": "tab_bioclima_siam",
+        "name": "Formato Conectividad",
+        "func": "const status = String(msg.payload).trim().toLowerCase();\nif (status === 'online') {\n    msg.payload = '🟢 NODO ESP32 CONECTADO Y TRANSMITIENDO';\n} else {\n    msg.payload = '🔴 NODO ESP32 DESCONECTADO (Corte de energía / enlace)';\n}\nreturn msg;",
+        "outputs": 1,
+        "x": 480,
+        "y": 790,
+        "wires": [
+            [
+                "txt_lwt_estado"
+            ]
+        ]
+    },
+    {
+        "id": "txt_lwt_estado",
+        "type": "ui-text",
+        "z": "tab_bioclima_siam",
+        "group": "group_control",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "Texto Enlace LWT",
+        "label": "Diagnóstico de Enlace IoT",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 740,
+        "y": 790,
+        "wires": []
+    },
+    {
+        "id": "group_telemetria",
+        "type": "ui-group",
+        "name": "Telemetría Ambiental y Sensación Térmica",
+        "page": "page_bioclima_main",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "group_graficos",
+        "type": "ui-group",
+        "name": "Análisis Temporal y Curva Bioclimática",
+        "page": "page_bioclima_main",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "group_control",
+        "type": "ui-group",
+        "name": "Mando Remoto, Actuación y Diagnóstico",
+        "page": "page_bioclima_main",
+        "width": 6,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "page_bioclima_main",
+        "type": "ui-page",
+        "name": "SIAM-Yucatán Dashboard",
+        "ui": "ui_base_bioclima",
+        "path": "/bioclima",
+        "icon": "weather-sunny",
+        "layout": "grid",
+        "theme": "theme_bioclima",
+        "breakpoints": [
+            { "name": "Default", "px": "0", "cols": "3" },
+            { "name": "Tablet", "px": "576", "cols": "6" },
+            { "name": "Desktop", "px": "1024", "cols": "12" }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "ui_base_bioclima",
+        "type": "ui-base",
+        "name": "SIAM Dashboard Base",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "theme_bioclima",
+        "type": "ui-theme",
+        "name": "Tema Bioclimático UPY",
+        "colors": {
+            "surface": "#1e293b",
+            "primary": "#0284c7",
+            "bgPage": "#f1f5f9",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cbd5e1"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "8px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "broker_mosquitto_local",
+        "type": "mqtt-broker",
+        "name": "Mosquitto Local UPY",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "node-red-bioclima-dashboard",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "global_config_dashboard",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.31.0"
+        }
+    }
+]
