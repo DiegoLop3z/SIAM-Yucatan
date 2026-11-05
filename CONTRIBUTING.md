@@ -10,8 +10,8 @@ El desarrollo se realiza mediante la metodología de **programación en parejas 
 
 | Desarrollador | Usuario GitHub | Rol Principal | Herramienta IA Copiloto |
 |---|---|---|---|
-| **Diego López Pérez** | [`@DiegoLop3z`](https://github.com/DiegoLop3z) | Arquitectura de Firmware PlatformIO, Algoritmos bioclimáticos, Scripts y Reporte Técnico | Gemini |
-| **Arturo Heredia Martín** | [`@arturoherediam`](https://github.com/arturoherediam) | Ensamble y Validación de Hardware, Broker Mosquitto local, Node-RED Dashboard 2.0 y QA | Claude |
+| **Diego López Pérez** | [`@DiegoLop3z`](https://github.com/DiegoLop3z) | Armado Físico de Hardware en Protoboard, Flasheo de Firmware, Pruebas de Banco y Fotos | Gemini |
+| **Arturo Heredia Martín** | [`@arturoherediam`](https://github.com/arturoherediam) | Redacción de Reporte Técnico Oficial (16 Secciones), Broker Mosquitto y Dashboard Node-RED | Claude |
 
 ---
 
@@ -61,12 +61,12 @@ git commit -m "feat(fw): implementar temporizador no bloqueante de retorno a mod
 ## 4. Gestión del Backlog y Tareas (GitHub Issues)
 
 El proyecto se gestiona mediante los 6 issues detallados en la carpeta [`github_issues/`](github_issues/):
-- **Issue #1:** `[HW] Verificación Física del Protoboard y Registro Fotográfico de Evidencias` (Arturo Heredia / Claude)
+- **Issue #1:** `[HW] Armado Físico del Hardware en Protoboard y Registro Fotográfico` (Diego López / Gemini)
 - **Issue #2:** `[FW] Desarrollo del Módulo de Sensores, LDR y Algoritmo de Sensación Térmica` (Diego López / Gemini)
 - **Issue #3:** `[FW] Implementación de Reglas de Automatización, Temporizador Anti-Olvido y MQTT` (Diego López / Gemini)
 - **Issue #4:** `[DASH] Configuración de Broker Mosquitto y Flujos en Node-RED Dashboard 2.0` (Arturo Heredia / Claude)
 - **Issue #5:** `[QA] Protocolo de Pruebas Integrales y Verificación de Demostración (7 Pasos)` (Ambos colaboradores)
-- **Issue #6:** `[DOC] Redacción del Reporte Técnico Oficial (16 Secciones) y README Principal` (Diego López / Gemini)
+- **Issue #6:** `[DOC] Redacción del Reporte Técnico Oficial (16 Secciones) y README Principal` (Arturo Heredia / Claude)
 
 ---
 

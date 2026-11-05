@@ -13,8 +13,8 @@ Este directorio aloja las evidencias gráficas oficiales requeridas por la rúbr
 
 | Archivo | Tipo de Evidencia | Responsable de Captura | Estado / Uso |
 |---|---|---|---|
-| `protoboard_vista_general.png` | Fotografía física del ensamble completo en protoboard | Arturo Heredia Martín | Entregable 4 (Prototipo físico ensamblado) y Reporte Técnico |
-| `protoboard_actuacion_ventilador.png` | Fotografía de detalle en conmutación de ventilador y LED RGB | Arturo Heredia Martín | Entregable 4 / 6 (Demostración de actuación física en vivo) |
+| `protoboard_vista_general.png` | Fotografía física del ensamble completo en protoboard | Diego López Pérez | Entregable 4 (Prototipo físico ensamblado) y Reporte Técnico |
+| `protoboard_actuacion_ventilador.png` | Fotografía de detalle en conmutación de ventilador y LED RGB | Diego López Pérez | Entregable 4 / 6 (Demostración de actuación física en vivo) |
 | `dashboard_nodered_telemetria.png` | Captura de pantalla de Node-RED Dashboard 2.0 en operación | Arturo Heredia Martín | Entregable 5 (Dashboard web con métricas y gauges en vivo) |
 | `dashboard_nodered_control.png` | Captura de mando remoto, lazo cerrado y retorno anti-olvido | Arturo Heredia Martín | Entregable 5 / 7 (Control bidireccional y temporizador de 60s) |
 | `diagrama_arquitectura.png` | Diagrama de bloques y capas IoT del sistema integral | Diego López Pérez | Entregable 2 (Arquitectura IoT) y README general |

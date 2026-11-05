@@ -629,7 +629,7 @@ def generar_placeholder_protoboard_general(salida_png):
         ax.add_patch(c)
         ax.text(x + w/2, y + h/2, etiqueta, fontsize=8.5, fontweight='bold', color=textcol, ha='center', va='center')
 
-    ax.text(6.0, 0.6, "[Instrucción para Arturo: Reemplazar este render por fotografía real del protoboard tomada con celular o cámara]", fontsize=9, color='#cbd5e1', ha='center', style='italic')
+    ax.text(6.0, 0.6, "[Instrucción para Diego: Reemplazar este render por fotografía real del protoboard tomada con celular o cámara]", fontsize=9, color='#cbd5e1', ha='center', style='italic')
 
     fig.savefig(salida_png, bbox_inches='tight', dpi=120)
     plt.close(fig)
@@ -666,7 +666,7 @@ def generar_placeholder_protoboard_actuacion(salida_png):
     ax.text(8.5, 4.0, "ALERTA\nACTIVA", fontsize=13, fontweight='bold', color='#ffffff', ha='center', va='center')
     ax.text(8.5, 1.4, "LED RGB SEMÁFORO (ROJO)\n(Alerta Crítica: Heat Index >= 38 °C)", fontsize=11, fontweight='bold', color='#ef4444', ha='center')
 
-    ax.text(6.0, 0.6, "[Instrucción para Arturo: Reemplazar por fotografía real en primer plano del ventilador girando y LED encendido]", fontsize=9, color='#94a3b8', ha='center', style='italic')
+    ax.text(6.0, 0.6, "[Instrucción para Diego: Reemplazar por fotografía real en primer plano del ventilador girando y LED encendido]", fontsize=9, color='#94a3b8', ha='center', style='italic')
 
     fig.savefig(salida_png, bbox_inches='tight', dpi=120)
     plt.close(fig)

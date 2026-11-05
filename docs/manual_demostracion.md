@@ -24,6 +24,9 @@ Este documento proporciona el guion operativo exacto para llevar a cabo la demos
    ```bash
    mosquitto_sub -h localhost -p 1883 -u dashboard -P 'UpY2026!Dash' -t 'yucatan/bioclima/#' -v
    ```
+5. **Distribución Operativa en la Demostración:**
+   - **Diego López Pérez:** Manipulación y control del prototipo físico en protoboard (estímulo térmico sobre SHT41, oclusión de fotocelda LDR, interacción con sensor PIR, visualización de OLED y constatación del giro del ventilador de 5V y semáforo RGB).
+   - **Arturo Heredia Martín:** Operación del panel web Node-RED Dashboard 2.0 y broker Mosquitto (supervisión de gauges y tendencias, ejecución del mando remoto manual, verificación del temporizador anti-olvido de 60s y defensa del reporte técnico).
 
 ---
 

@@ -1,7 +1,7 @@
 # Issue #6: [DOC] Redacción del Reporte Técnico Oficial (16 Secciones) y README Principal
 
-- **Asignado a:** Diego López Pérez ([`@DiegoLop3z`](https://github.com/DiegoLop3z))
-- **Copiloto IA:** Gemini
+- **Asignado a:** Arturo Heredia Martín ([`@arturoherediam`](https://github.com/arturoherediam))
+- **Copiloto IA:** Claude
 - **Etiquetas:** `documentation`, `reporte-academico`, `readme`, `rubrica`
 
 ---

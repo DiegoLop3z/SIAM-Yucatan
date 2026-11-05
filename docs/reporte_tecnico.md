@@ -6,9 +6,9 @@
 > **Materia:** Internet de las Cosas (IoT)  
 > **Docente Titular:** M.I. Javier Poot  
 > **Integrantes del Equipo (Estudiantes):**  
-> • **Diego López Pérez** (GitHub: [`@DiegoLop3z`](https://github.com/DiegoLop3z))  
-> • **Arturo Heredia Martín** (GitHub: [`@arturoherediam`](https://github.com/arturoherediam))  
-> **Metodología de Trabajo:** Programación en parejas con Inteligencia Artificial (AI Pair Programming: Gemini & Claude)
+> • **Diego López Pérez** (GitHub: [`@DiegoLop3z`](https://github.com/DiegoLop3z) — Armado de Hardware Físico, Firmware y Pruebas de Banco)  
+> • **Arturo Heredia Martín** (GitHub: [`@arturoherediam`](https://github.com/arturoherediam) — Redacción de Reporte Técnico Oficial y Dashboard Node-RED)  
+> **Metodología de Trabajo:** Programación en parejas con Inteligencia Artificial (AI Pair Programming: Diego con Gemini & Arturo con Claude)
 
 ---
 
@@ -27,8 +27,8 @@
                                     (SIAM-YUCATÁN)
 
               Docente Titular:  M.I. Javier Poot
-              Autores / Alumnos: Diego López Pérez      (Matrícula / @DiegoLop3z)
-                                 Arturo Heredia Martín  (Matrícula / @arturoherediam)
+              Autores / Alumnos: Diego López Pérez      (@DiegoLop3z) - Hardware Físico y Firmware
+                                 Arturo Heredia Martín  (@arturoherediam) - Reporte Técnico y Dashboard
               Fecha de Entrega: Noviembre de 2026
               Ubicación:        Ucú - Mérida, Yucatán, México
 ========================================================================================

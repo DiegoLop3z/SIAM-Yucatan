@@ -1,13 +1,13 @@
-# Issue #1: [HW] Verificación Física del Protoboard y Registro Fotográfico de Evidencias
+# Issue #1: [HW] Armado Físico del Hardware en Protoboard, Pruebas de Banco y Registro Fotográfico
 
-- **Asignado a:** Arturo Heredia Martín ([`@arturoherediam`](https://github.com/arturoherediam))
-- **Copiloto IA:** Claude
-- **Etiquetas:** `hardware`, `protoboard`, `etapa-npn`, `evidencias`
+- **Asignado a:** Diego López Pérez ([`@DiegoLop3z`](https://github.com/DiegoLop3z))
+- **Copiloto IA:** Gemini
+- **Etiquetas:** `hardware`, `protoboard`, `etapa-npn`, `evidencias`, `banco-pruebas`
 
 ---
 
 ## Descripción del Trabajo
-Inspeccionar y verificar exhaustivamente el circuito ensamblado en la protoboard de 830 puntos, asegurando el cumplimiento estricto del diagrama electrónico y el mapa de conexiones (`hardware/hardware_conexion.md`).
+Armar, cablear y verificar exhaustivamente el circuito en la protoboard de 830 puntos, asegurando el cumplimiento estricto del diagrama electrónico y el mapa de conexiones (`hardware/hardware_conexion.md`), así como realizar las pruebas de banco y captura de fotografías físicas reales:
 
 ### Puntos Específicos de Inspección:
 1. **Bus I²C Compartido (3.3V):** Confirmar que el sensor SHT41 (`0x44`) y la pantalla OLED SSD1306 (`0x3C`) compartan `GPIO 21` (SDA) y `GPIO 22` (SCL) sin interferencias.

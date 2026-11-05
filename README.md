@@ -250,12 +250,12 @@ Monitor_actuador/
 │   └── simular_mqtt.py                # Script simulador de telemetría y mando MQTT
 └── github_issues/                     # Banco de 6 issues estructurados para GitHub
     ├── README.md                      # Resumen del backlog y asignaciones
-    ├── ISSUE_01_hardware_setup.md     # Asignado a Arturo Heredia (@arturoherediam / Claude)
+    ├── ISSUE_01_hardware_setup.md     # Asignado a Diego López (@DiegoLop3z / Gemini)
     ├── ISSUE_02_firmware_telemetria.md # Asignado a Diego López (@DiegoLop3z / Gemini)
     ├── ISSUE_03_firmware_automatizacion.md # Asignado a Diego López (@DiegoLop3z / Gemini)
     ├── ISSUE_04_mosquitto_nodered_dashboard.md # Asignado a Arturo Heredia (@arturoherediam / Claude)
     ├── ISSUE_05_integracion_pruebas_demostracion.md # Ambos colaboradores
-    └── ISSUE_06_reporte_documentacion_final.md # Asignado a Diego López (@DiegoLop3z / Gemini)
+    └── ISSUE_06_reporte_documentacion_final.md # Asignado a Arturo Heredia (@arturoherediam / Claude)
 ```
 
 ---
@@ -281,9 +281,9 @@ Monitor_actuador/
 Proyecto realizado en el marco de la evaluación de la **Unidad 2: Sistema IoT Integrador** de la carrera de Ingeniería / Especialidad en Internet de las Cosas en la **Universidad Politécnica de Yucatán (UPY)**.
 
 - **Diego López Pérez** — [`@DiegoLop3z`](https://github.com/DiegoLop3z)  
-  *Arquitectura de Firmware, Algoritmos Bioclimáticos, Scripts de Automatización y Reporte Técnico.*
+  *Armado Físico de Hardware en Protoboard (Etapa Transistor NPN, SHT41, OLED, LDR, PIR, LEDs), Flasheo de Firmware, Pruebas Físicas de Banco y Registro Fotográfico de Evidencias.*
 - **Arturo Heredia Martín** — [`@arturoherediam`](https://github.com/arturoherediam)  
-  *Ensamble y Validación de Hardware, Broker Mosquitto, Despliegue de Node-RED Dashboard 2.0 y Protocolo QA.*
+  *Redacción y Consolidación del Reporte Técnico Oficial (16 Secciones UPY con Claude), Configuración de Broker Mosquitto, Despliegue de Node-RED Dashboard 2.0 y Capturas de Interfaz.*
 - **Docente Titular:** M.I. Javier Poot
 
 ---

@@ -122,5 +122,5 @@ El sistema se compone de cuatro subsistemas acoplados:
 
 | Integrante | Rol en el Proyecto | Herramienta IA | Tareas Asignadas |
 |---|---|---|---|
-| **Diego López Pérez** (`@DiegoLop3z`) | Líder de Firmware, Arquitectura y Reporte | Gemini | Estructuración Git, Firmware PlatformIO, Algoritmo NOAA, Control NPN, Scripts de diagramas/simulación y Redacción del Reporte de 16 secciones. |
-| **Arturo Heredia Martín** (`@arturoherediam`) | Líder de Hardware, Broker y Dashboard | Claude | Verificación y cableado de protoboard, Levantamiento del broker Mosquitto, Despliegue de Node-RED Dashboard 2.0, Captura de evidencias fotográficas y Pruebas integrales de lazo cerrado. |
+| **Diego López Pérez** (`@DiegoLop3z`) | Líder de Hardware Físico, Firmware y Pruebas de Banco | Gemini | Armado en protoboard (circuito transistor NPN del ventilador 5V, SHT41, OLED, LDR, PIR, LEDs), flasheo de firmware, pruebas físicas con multímetro, registro fotográfico de evidencias físicas (Fotos 1 y 2), y scripts de automatización/simulación. |
+| **Arturo Heredia Martín** (`@arturoherediam`) | Líder de Documentación Oficial, Broker y Dashboard | Claude | Redacción y consolidación del Reporte Técnico Oficial (16 secciones obligatorias UPY con Claude), configuración del broker Mosquitto local, despliegue de Node-RED Dashboard 2.0, captura de evidencias web (Fotos 3 y 4) y pruebas de supervisión remota en lazo cerrado. |

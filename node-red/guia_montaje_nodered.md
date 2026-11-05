@@ -128,3 +128,35 @@ Cuando el dashboard esté operando fluidamente (con la ESP32 conectada o durante
    - Encuadre completo mostrando los 4 gauges con valores en movimiento, la gráfica histórica con curvas y el semáforo en Verde o Amarillo.
 2. **Captura 2:** `docs/imagenes/dashboard_nodered_control.png`  
    - Encuadre enfocado en la sección de control: activa el ventilador en modo MANUAL para mostrar el switch en ON, la confirmación de estado del ventilador y el mensaje de retorno a AUTO.
+
+---
+
+## 8. Guía para la Redacción y Refinamiento del Reporte Técnico Oficial (`docs/reporte_tecnico.md`)
+
+Arturo, ahora eres el responsable principal del **Entregable 7: Reporte Técnico Oficial (16 Secciones)** requerido por el profesor M.I. Javier Poot. A continuación se detallan las pautas para avanzar con y sin asistencia de IA:
+
+### 8.1 Flujo de Trabajo CON Claude (Recomendado):
+1. **Contexto a cargar a Claude:**
+   - Comparte a Claude los archivos:
+     - `docs/reporte_tecnico.md` (la plantilla completa ya estructurada con las 18 secciones).
+     - `node-red/guia_montaje_nodered.md` (este manual).
+     - `docs/propuesta_proyecto.md` y `docs/arquitectura_iot.md`.
+2. **Prompt base sugerido para Claude:**
+   ```text
+   "Hola Claude. Estoy trabajando con Diego López Pérez en el proyecto SIAM-Yucatán para la evaluación de la Unidad 2 de IoT en la UPY (profesor Javier Poot). Mi responsabilidad es pulir y completar el Reporte Técnico Oficial en docs/reporte_tecnico.md. Por favor, revisa el contenido de cada sección, asegúrate de mantener el rigor académico formal, las fórmulas termodinámicas del Heat Index de la NOAA, el cálculo del punto de saturación del transistor NPN (Rb=1kΩ, Ib=2.6mA, Ic=140mA), las citas normativas de la NOM-015-STPS-2001 y NOM-025-STPS-2008, e integra la explicación de las capturas de Node-RED Dashboard 2.0 que he generado."
+   ```
+3. **Puntos clave a enriquecer en el reporte:**
+   - **Sección 12 (Interfaz de Monitoreo):** Detallar los nodos utilizados en el flujo de Dashboard 2.0, el desacoplo de controles y la suscripción a tópicos MQTT.
+   - **Sección 15 (Resultados Experimentales):** Cruzar los datos obtenidos en las pruebas de Node-RED (tiempos de respuesta en lazo cerrado, latencia de visualización < 250 ms) con los datos del protoboard que te proporcione Diego.
+   - **Sección 16 (Evidencias Fotográficas):** Asegurar que las 4 figuras (`protoboard_vista_general.png`, `protoboard_actuacion_ventilador.png`, `dashboard_nodered_telemetria.png`, `dashboard_nodered_control.png`) queden correctamente referenciadas en el texto.
+
+### 8.2 Flujo de Trabajo SIN Claude (Modo Manual):
+1. Abrir el repositorio clonado en Visual Studio Code u otro editor con soporte de Markdown (ej. Obsidian).
+2. Revisar `docs/reporte_tecnico.md` sección por sección, verificando ortografía, formato de tablas y encabezados.
+3. Asegurar que las capturas de pantalla tomadas se guarden exactamente con los nombres especificados en `docs/imagenes/` para que los enlaces relativos se rendericen inmediatamente en GitHub.
+4. Confirmar cambios con git:
+   ```bash
+   git add docs/reporte_tecnico.md docs/imagenes/
+   git commit -m "docs(reporte): completar redaccion de secciones academicas y evidencias de interfaz"
+   git push origin main
+   ```

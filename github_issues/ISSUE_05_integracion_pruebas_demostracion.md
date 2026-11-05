@@ -1,13 +1,15 @@
 # Issue #5: [QA] Protocolo de Pruebas Integrales y Verificación de Demostración (7 Pasos)
 
 - **Asignado a:** Diego López Pérez ([`@DiegoLop3z`](https://github.com/DiegoLop3z)) & Arturo Heredia Martín ([`@arturoherediam`](https://github.com/arturoherediam))
-- **Copiloto IA:** Gemini + Claude
+- **Copiloto IA:** Gemini (Hardware & Firmware) + Claude (Dashboard & Reporte)
 - **Etiquetas:** `qa`, `testing`, `demostracion`, `rubrica`
 
 ---
 
 ## Descripción del Trabajo
 Ejecutar en conjunto la secuencia de pruebas funcionales de extremo a extremo conforme a la lista de chequeo de 7 pasos establecida en `docs/manual_demostracion.md`, asegurando que el prototipo físico y la plataforma web respondan sin fallas durante la evaluación con el docente M.I. Javier Poot.
+- **Diego López Pérez:** A cargo de la manipulación física del banco de pruebas (excitación de calor al SHT41, oclusión del LDR, movimiento frente al PIR, verificación del ventilador 5V y semáforo RGB).
+- **Arturo Heredia Martín:** A cargo de la operación del panel web Node-RED Dashboard 2.0, broker Mosquitto, temporizador anti-olvido y cotejo con el reporte técnico oficial.
 
 ### Secuencia de Verificación:
 1. **Paso 1: Encendido y Diagnóstico de Red:** Comprobar que el LED azul onboard (`GPIO 2`) parpadee al buscar Wi-Fi/MQTT y se quede fijo al conectar, y que la pantalla OLED muestre la bienvenida y la IP local.
