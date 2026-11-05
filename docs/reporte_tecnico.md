@@ -27,8 +27,8 @@
                                     (SIAM-YUCATÁN)
 
               Docente Titular:  M.I. Javier Poot
-              Autores / Alumnos: Diego López Pérez      (@DiegoLop3z) - Hardware Físico y Firmware
-                                 Arturo Heredia Martín  (@arturoherediam) - Reporte Técnico y Dashboard
+              Autores / Alumnos: Diego López Pérez      (@DiegoLop3z) - Armado Físico de Hardware y Pruebas
+                                 Arturo Heredia Martín  (@arturoherediam) - Reporte Técnico Oficial y Dashboard
               Fecha de Entrega: Noviembre de 2026
               Ubicación:        Ucú - Mérida, Yucatán, México
 ========================================================================================
@@ -275,19 +275,19 @@ El código fuente se aloja en `firmware/esp32-bioclima-iot/src/main.cpp`. Caract
 
 ### 16.1 Prototipo Físico Ensamblado en Protoboard
 ![Prototipo Físico Ensamblado](imagenes/protoboard_vista_general.png)
-*Figura 1: Vista general del ensamble en protoboard mostrando el microcontrolador ESP32 DevKit V1, sensor SHT41, pantalla OLED, sensor PIR, LDR, etapa del transistor NPN del ventilador y LED RGB.*
+*Figura 1: Vista general del ensamble en protoboard mostrando el microcontrolador ESP32 DevKit V1, sensor SHT41, pantalla OLED, sensor PIR, LDR, etapa del transistor NPN del ventilador y LED RGB. (Registro y montaje físico a cargo de Diego López Pérez).*
 
 ### 16.2 Actuación Física: Ventilador 5V y LED RGB
 ![Actuación del Ventilador](imagenes/protoboard_actuacion_ventilador.png)
-*Figura 2: Detalle en conmutación activa demostrando la rotación de las aspas del ventilador accionado por el transistor NPN y el LED RGB encendido en Rojo por alerta de estrés térmico.*
+*Figura 2: Detalle en conmutación activa demostrando la rotación de las aspas del ventilador accionado por el transistor NPN y el LED RGB encendido en Rojo por alerta de estrés térmico. (Evidencia experimental a cargo de Diego López Pérez).*
 
 ### 16.3 Node-RED Dashboard 2.0: Telemetría en Vivo
 ![Dashboard Telemetría](imagenes/dashboard_nodered_telemetria.png)
-*Figura 3: Interfaz gráfica web desplegando en tiempo real los cuatro gauges ambientales, curva de evolución térmica, indicador de presencia y semáforo NOM-015.*
+*Figura 3: Interfaz gráfica web desplegando en tiempo real los cuatro gauges ambientales, curva de evolución térmica, indicador de presencia y semáforo NOM-015. (Despliegue y validación a cargo de Arturo Heredia Martín).*
 
 ### 16.4 Node-RED Dashboard 2.0: Mando Remoto y Retorno Anti-Olvido
 ![Dashboard Mando Remoto](imagenes/dashboard_nodered_control.png)
-*Figura 4: Sección de control remoto con switch desacoplado en lazo cerrado, confirmación de estado físico y mensaje del temporizador de purga anti-olvido.*
+*Figura 4: Sección de control remoto con switch desacoplado en lazo cerrado, confirmación de estado físico y mensaje del temporizador de purga anti-olvido. (Despliegue y validación a cargo de Arturo Heredia Martín).*
 
 ---
 

@@ -11,7 +11,7 @@
 
 | Issue # | Archivo | Título del Issue | Responsable Principal | Copiloto IA | Estado |
 |:---:|---|---|---|:---:|:---:|
-| **#1** | [`ISSUE_01_hardware_setup.md`](ISSUE_01_hardware_setup.md) | `[HW] Verificación Física del Protoboard y Registro Fotográfico de Evidencias` | Diego López Pérez ([`@DiegoLop3z`](https://github.com/DiegoLop3z)) | Gemini | Listo |
+| **#1** | [`ISSUE_01_hardware_setup.md`](ISSUE_01_hardware_setup.md) | `[HW] Armado Físico del Hardware en Protoboard, Pruebas de Banco y Registro Fotográfico` | Diego López Pérez ([`@DiegoLop3z`](https://github.com/DiegoLop3z)) | Gemini | Listo |
 | **#2** | [`ISSUE_02_firmware_telemetria.md`](ISSUE_02_firmware_telemetria.md) | `[FW] Desarrollo del Módulo de Sensores, LDR y Algoritmo de Sensación Térmica` | Diego López Pérez ([`@DiegoLop3z`](https://github.com/DiegoLop3z)) | Gemini | Listo |
 | **#3** | [`ISSUE_03_firmware_automatizacion.md`](ISSUE_03_firmware_automatizacion.md) | `[FW] Implementación de Reglas de Automatización, Temporizador Anti-Olvido y MQTT` | Diego López Pérez ([`@DiegoLop3z`](https://github.com/DiegoLop3z)) | Gemini | Listo |
 | **#4** | [`ISSUE_04_mosquitto_nodered_dashboard.md`](ISSUE_04_mosquitto_nodered_dashboard.md) | `[DASH] Configuración de Broker Mosquitto y Flujos en Node-RED Dashboard 2.0` | Arturo Heredia Martín ([`@arturoherediam`](https://github.com/arturoherediam)) | Claude | Listo |

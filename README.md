@@ -233,6 +233,7 @@ Monitor_actuador/
 │   ├── configuracion_mosquitto.md     # Parámetros del broker, ACL, usuarios y cortafuegos
 │   └── guia_montaje_nodered.md        # Manual de puesta en marcha para Arturo y Claude
 ├── docs/
+│   ├── plan_maestro_proyecto.md       # Plan maestro integral y matriz de trabajo en parejas
 │   ├── propuesta_proyecto.md          # Entregable 1 de la rúbrica UPY
 │   ├── arquitectura_iot.md            # Entregable 2 (bloques, electrónico, red y flujo)
 │   ├── manual_demostracion.md         # Entregable 6: Guía de evaluación en vivo de 7 pasos
