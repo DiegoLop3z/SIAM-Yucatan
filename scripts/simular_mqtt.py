@@ -92,9 +92,26 @@ def main():
     if has_paho:
         broker_host = sys.argv[1] if len(sys.argv) > 1 else "localhost"
         broker_port = int(sys.argv[2]) if len(sys.argv) > 2 else 1883
-        client = mqtt.Client(client_id="simulador-siam-py")
+
+        # Credenciales: el broker tiene allow_anonymous false. El simulador publica
+        # como si fuera la ESP32, así que usa el mismo usuario (esp32_user por defecto).
+        # Uso: MQTT_USER=esp32_user python3 scripts/simular_mqtt.py [host] [puerto]
+        #      (la contraseña se pide por teclado si no está en MQTT_PASSWORD)
+        import os, getpass
+        mqtt_user = os.environ.get("MQTT_USER", "esp32_user")
+        mqtt_pass = os.environ.get("MQTT_PASSWORD") or getpass.getpass(f"Contraseña MQTT para '{mqtt_user}': ")
+
+        # Compatibilidad paho-mqtt 1.x y 2.x
+        if hasattr(mqtt, "CallbackAPIVersion"):
+            client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1, client_id="simulador-siam-py")
+        else:
+            client = mqtt.Client(client_id="simulador-siam-py")
+        client.username_pw_set(mqtt_user, mqtt_pass)
 
         def on_connect(c, userdata, flags, rc):
+            if rc == 5:
+                print("[MQTT] Conexión rechazada: usuario/contraseña incorrectos (rc=5).")
+                return
             if rc == 0:
                 print(f"[MQTT] Conectado exitosamente al broker {broker_host}:{broker_port}")
                 c.publish(TOPIC_STATUS, "online", retain=True)

@@ -31,16 +31,17 @@
 #define PIN_LED_NETWORK         2     // LED azul integrado en placa ESP32 (Diagnóstico de red)
 
 // ---------- Parámetros de Red y Broker MQTT ----------
+// Las credenciales viven solo en include/secrets.h (ignorado por git).
+// Sin ese archivo la compilación se detiene con un mensaje claro, en lugar de
+// flashear credenciales de ejemplo que nunca conectarían.
 #if __has_include("secrets.h")
     #include "secrets.h"
 #else
-    // Valores predeterminados para hotspot local de demostración
-    #define WIFI_SSID           "UPY_IoT_Lab"
-    #define WIFI_PASSWORD       "ClimaYucatan2026"
-    #define MQTT_SERVER         "192.168.1.100"
+    #error "Falta include/secrets.h: copie include/secrets.h.example como include/secrets.h y rellene sus credenciales."
+#endif
+
+#ifndef MQTT_PORT
     #define MQTT_PORT           1883
-    #define MQTT_USER           "esp32_user"
-    #define MQTT_PASSWORD       "UpY2026!"
 #endif
 
 #define MQTT_CLIENT_ID          "esp32-bioclima-siam"
