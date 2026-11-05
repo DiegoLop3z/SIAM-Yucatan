@@ -37,7 +37,7 @@
 #if __has_include("secrets.h")
     #include "secrets.h"
 #else
-    #error "Falta include/secrets.h: copie include/secrets.h.example como include/secrets.h y rellene sus credenciales."
+    #error "Falta el archivo include/secrets.h; configure las credenciales mediante el entorno de compilación."
 #endif
 
 #ifndef MQTT_PORT
