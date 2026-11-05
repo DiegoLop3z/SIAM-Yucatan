@@ -1,0 +1,28 @@
+# ============================================================================
+#  Reglas ACL de Mosquitto para SIAM-Yucatán
+#  Agregar al archivo ACL existente (/etc/mosquitto/acl) DENTRO de los bloques
+#  de usuario que ya existen; no duplicar las líneas "user ...".
+#
+#  Respaldo previo:  sudo cp /etc/mosquitto/acl /etc/mosquitto/acl.bak-$(date +%F)
+#  Aplicar cambios:  sudo systemctl restart mosquitto
+# ============================================================================
+
+# --- Bajo "user dashboard" (Node-RED) ---
+topic read yucatan/bioclima/telemetria
+topic read yucatan/bioclima/sensor/#
+topic read yucatan/bioclima/actuador/ventilador/estado
+topic read yucatan/bioclima/actuador/modo/estado
+topic read yucatan/bioclima/status
+topic write yucatan/bioclima/actuador/ventilador/set
+topic write yucatan/bioclima/actuador/modo/set
+topic write yucatan/bioclima/config/umbral_temp
+
+# --- Bajo "user esp32_user" (ESP32 y scripts/simular_mqtt.py) ---
+topic write yucatan/bioclima/telemetria
+topic write yucatan/bioclima/sensor/#
+topic write yucatan/bioclima/actuador/ventilador/estado
+topic write yucatan/bioclima/actuador/modo/estado
+topic write yucatan/bioclima/status
+topic read yucatan/bioclima/actuador/ventilador/set
+topic read yucatan/bioclima/actuador/modo/set
+topic read yucatan/bioclima/config/umbral_temp
